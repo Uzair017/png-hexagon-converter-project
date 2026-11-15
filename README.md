@@ -42,6 +42,12 @@ To convert a PNG image using the command line:
 
 python -m png2svg.cli input.png output.svg
 
+can also specify the hexagon radius using the `--radius` parameter:
+
+python -m png2svg.cli input.png output.svg --radius 25
+
+The default radius is 15 if no custom radius is specified.
+
 For marimo interface. Run it using:
 
 marimo edit app.py

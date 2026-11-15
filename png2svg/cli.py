@@ -1,19 +1,29 @@
-import sys
+import argparse
 
 from png2svg.converter import convert
 
 
 def main(args=None):
-    if args is None:
-        args = sys.argv[1:]
+    parser = argparse.ArgumentParser(
+        description="Convert a PNG image to an SVG using hexagons."
+    )
 
-    if len(args) != 2:
-        raise SystemExit("Usage: python -m png2svg.cli input.png output.svg")
+    parser.add_argument("input_filename")
+    parser.add_argument("output_filename")
+    parser.add_argument(
+        "--radius",
+        type=float,
+        default=15,
+        help="Radius of the hexagons (default: 15)"
+    )
 
-    input_filename = args[0]
-    output_filename = args[1]
+    parsed_args = parser.parse_args(args)
 
-    convert(input_filename, output_filename)
+    convert(
+        parsed_args.input_filename,
+        parsed_args.output_filename,
+        parsed_args.radius
+    )
 
 
 if __name__ == "__main__":
