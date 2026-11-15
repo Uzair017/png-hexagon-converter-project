@@ -5,10 +5,8 @@ from png2svg.svg_generator import generate_hexagon
 from png2svg.svg_writer import write_svg
 
 
-def convert(input_filename, output_filename):
+def convert(input_filename, output_filename, radius=15):
     image = load_image(input_filename)
-
-    radius = 15
     hexagons = []
 
     coordinates = generate_hexagon_coordinates(
